@@ -1,0 +1,105 @@
+<div class="banner">
+    <div style="z-index: 0;height: 225px;">
+        <slideshow #slideshow [height]="height" [minHeight]="'225px'"
+            [autoPlay]="true" [showArrows]="false" [imageUrls]="imageSources" [lazyLoad]="imageSources?.length > 1"
+            [autoPlayWaitForLazyLoad]="true" (onIndexChanged)="bannerChange($event);">
+        </slideshow>
+    </div>
+    <div class="header">
+        <div class="title"><strong>THEMOVIEBOX</strong></div>
+        <div class="action-box">
+            <img class="icon" src="assets/imgs/search-icon.png"/>
+            <button class="btn non-bkg">LOG IN</button>
+            <button class="btn pink-bkg">SIGN UP</button>
+        </div>
+    </div>
+    <div class="bottom">
+        <span class="strong" style="margin-left: 30px" *ngIf="onTop"> {{onTop.title}} </span>
+        <br/>
+        <div style="background: black">
+            <div style="margin-left: 30px;padding: 4px;" class="small-txt grey-txt">
+                <span class="movie-type" *ngFor="let detail of onTop.types">{{detail}}  </span> | duration: {{onTop.duration}}
+            </div>
+        </div>
+    </div>
+    <div class="bar-action">
+        <div style="display: block; margin-top: 10px;">
+            <div class="main-margin" style="float: left;">
+                <button class="btn pink-bkg">WATCH MOVIE</button>
+                <button class="btn white-border non-bkg">VIEW INFO</button>
+                <button class="btn non-bkg">+ ADD TO WISHLIS</button>
+            </div>
+            <div class="border main-margin" style="float: right;color: white; opacity: 0.8;">
+                <strong>Rating </strong> <span class="small-txt grey-txt"> Base on {{onTop.review | number}} reviewers</span>
+                <div style="height: 25px;line-height: 25px;">
+                    <star-rating style="float: left;" value="{{onTop.rating}}" checkedcolor="red" uncheckedcolor="grey" size="24px" readonly="false"></star-rating>
+                    <span style="float: right;width: 12px;text-align: center;" class="border small-txt"> {{onTop.rating | number}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="slider-dot" style="position: absolute; bottom: 1px;">
+            <ng-container *ngFor="let detail of tops; let i = index;">
+                <button [ngClass]="i === current ? 'active': undefined" (click)="changeBanner(i)"></button> 
+            </ng-container>
+        </div>
+    </div>
+</div>
+
+<div class="main-margin" style="height: 70px">
+    <div style="width: 90%; float: left;">
+        <mat-tab-group [color]="accent" [backgroundColor]="primary" (selectedTabChange)="selectedTabChange($event);">
+            <mat-tab>
+                <ng-template mat-tab-label>Popular</ng-template>
+            </mat-tab>
+            <mat-tab label="Top Rated"></mat-tab>
+            <mat-tab label="Up comming"></mat-tab>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <button mat-icon-button [matMenuTriggerFor]="Menu" class="cloneIcon">
+                        Genres <mat-icon>expand_more</mat-icon>
+                    </button>
+                    <mat-menu #Menu="matMenu">
+                        <button *ngFor="let detail of genres" mat-menu-item (click)="selectedGenre(detail);">{{ detail.name }}</button>
+                    </mat-menu>
+                </ng-template>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+    <div style="height: 70px;line-height: 70px; float: right;text-align: right;">
+        <img style="height: 20px" src="assets/imgs/collection-icon.png" />
+        <img style="height: 20px; margin-left: 5px" src="assets/imgs/list-icon.png" />
+    </div>
+</div>
+<div style="height: 20px;">
+</div>
+<div class="main-margin">
+    <list-m-selector [api]="movies" [lstGenre]="genres" style="margin-top: 10px"></list-m-selector>
+</div>
+
+<div [hidden]="loading === 'none'" style="width: 100%; text-align: center;">
+    <img style="height: 30px" src="assets/imgs/loading.gif" />
+    <div style="color: deeppink">Loading</div>
+</div>
+
+<div style="background: white;width: 100%;height: 150px">
+    <div class="main-margin" style="background: white;height: 50px; line-height: 50px; margin-bottom: 20px; border-bottom: 1px solid #f1f1f3">
+        <div class="strong;" style="float: left; font-size: 25px;">THEMOVIEBOX</div>
+        <div style="float: right;">
+            <a class="footer-action" href="#">About</a>
+            <a class="footer-action" href="#">Movies</a>
+            <a class="footer-action" href="#">Ratings</a>
+            <a class="footer-action" href="#">Contact</a>
+        </div>
+    </div>
+    <p></p>
+    <div class="main-margin" style="background: white;">
+        <div style="float: left">Designed by Milan Houter. All rights reserved</div>
+
+        <div style="float: right;">
+            <img style="height: 20px" src="assets/imgs/fa-icon.png" />
+            <img style="height: 20px; margin-left: 10px" src="assets/imgs/pin-icon.png" />
+            <img style="height: 20px; margin-left: 10px" src="assets/imgs/tw-icon.png" />
+            <img style="height: 20px; margin-left: 10px" src="assets/imgs/in-icon.png" />
+        </div>
+    </div>
+</div>

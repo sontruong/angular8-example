@@ -1,0 +1,21 @@
+<mat-grid-list cols="4" gutterSize="16px" rowHeight="1:1.65" style="background: f8f8f8;margin: 10px">
+    <mat-grid-tile *ngFor="let movie of movies" style="background: white;">
+        <div style="padding: 0px; position: relative;" matTooltip="{{ movie.overview }}">
+            <div style="position: relative;top: 0px">
+                <img style="width: 100%;top: 1px" src="{{ imageURL + movie.poster_path }}" onerror="this.src='assets/imgs/no-image.jpg'"/>
+                <span style="color: white;position:relative; bottom: 35px; margin-left: 15px; font-size: 20px">{{ movie.release_date | date: 'yyyy' }}</span>
+            </div>
+            <table style="width: 100%; margin-top: -20px;">
+                <tr>
+                    <td style="width: 80%">
+                        <div class="hidden-overflow strong-normal">{{ movie.title }}</div>
+                        <div class="hidden-overflow small-txt" style="height: 11px;">{{getType(movie.genre_ids)}}</div>
+                    </td>
+                    <td style="width: 20%">
+                        <span class="border-deeppink" style="width: 20px;text-align: center; float: right;">{{ movie.vote_average | number }}</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>

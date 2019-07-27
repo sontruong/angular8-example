@@ -1,1 +1,273 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~@angular/material/theming';
+
+$mat-one-primary: (
+    50 : #e0efff,
+    100 : #b3d7ff,
+    200 : #80bdff,
+    300 : #4da3ff,
+    400 : #268fff,
+    500 : #007bff,
+    600 : #0073ff,
+    700 : #0068ff,
+    800 : #005eff,
+    900 : #004bff,
+    A100 : #ffffff,
+    A200 : #f2f5ff,
+    A400 : #bfceff,
+    A700 : #a6baff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+$mat-one-accent: (
+    50 : #edeeef,
+    100 : #d3d6d8,
+    200 : #b6babe,
+    300 : #989ea4,
+    400 : #828a91,
+    500 : #6c757d,
+    600 : #646d75,
+    700 : #59626a,
+    800 : #4f5860,
+    900 : #3d454d,
+    A100 : #a9d3fd,
+    A200 : #77b9fc,
+    A400 : #41a0ff,
+    A700 : #2793ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #ffffff,
+    )
+);
+
+$mat-one-warn: (
+    50 : #fff8e1,
+    100 : #ffecb5,
+    200 : #ffe083,
+    300 : #ffd451,
+    400 : #ffca2c,
+    500 : #ffc107,
+    600 : #ffbb06,
+    700 : #ffb305,
+    800 : #ffab04,
+    900 : #ff9e02,
+    A100 : #ffffff,
+    A200 : #fffaf2,
+    A400 : #ffe4bf,
+    A700 : #ffd9a6,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+
+@include mat-core();
+
+$one-app-primary: mat-palette($mat-one-primary);
+$one-app-accent:  mat-palette($mat-one-accent);
+$one-app-warn:    mat-palette($mat-one-warn);
+
+$one-app-theme: mat-light-theme($one-app-primary, $one-app-accent, $one-app-warn);
+
+@include angular-material-theme($one-app-theme);
+
+body {
+    margin: 0px;
+    font-family: "Helvetica";
+    background: #f8f8f8;
+    font-size: 12px;
+    min-width: 650px;
+}
+.small-txt {
+    font-size: 10px;
+}
+
+.grey-txt {
+    color: grey;
+}
+
+.btn { 
+    color: #ffffff; 
+    background-color: #611BBD; 
+    border: 0px;
+    padding: 10px;
+    min-width: 110px;
+    margin-right: 5px;
+} 
+
+.btn:hover, 
+.btn:focus, 
+.btn:active, 
+.btn.active, 
+.open .dropdown-toggle.btn { 
+    color: #ffffff; 
+    background-color: #49247A; 
+} 
+
+.btn:active, 
+.btn.active, 
+.open .dropdown-toggle.btn { 
+    background-image: none; 
+}
+
+.btn .badge { 
+    color: #611BBD; 
+    background-color: #ffffff; 
+}
+
+.border {
+    border: 1px solid grey;
+    padding: 2px;
+}
+
+.border-deeppink {
+    border: 1px solid deeppink;
+    padding: 2px;
+}
+
+.strong {
+    font-weight: bold;
+    font-size: 30px;
+}
+.strong-normal {
+    font-weight: bold;
+}
+.main-margin {
+    margin-left: 30px;
+    margin-right: 30px;
+}
+.banner {
+    .non-bkg {
+        background: none !important;
+    }
+    .pink-bkg {
+        background: #ff0079;
+    }
+    .white-border {
+        border: 1px solid gray;
+    }
+    .header {
+        position: absolute; 
+        z-index: 1;
+        max-height: 50px;
+        width: 100%;
+        margin-top: 3px;
+        top: 2px;
+        .title {
+            color: white;
+            width: 200px;
+            height: 35px;
+            line-height: 35px;
+            float: left;
+            margin-left: 30px;
+        }
+        .action-box {
+            float: right;
+            margin-right: 30px;
+            button {
+                margin-left: 5px;
+                border-radius: 2px;
+            }
+            .icon {
+                width: 18px;
+                height: 18px;
+                vertical-align: middle;
+            }
+        }
+    }
+    .movie-type {
+        width: 30px;
+        overflow: hidden;
+    }
+    .bottom {
+        position: absolute; 
+        z-index: 1;
+        height: 55px;
+        top: 175px;
+        color: white;
+        opacity: 0.9;
+        width: 100%;
+    }
+    .bar-action {
+        background: black;
+        position: relative;
+        padding-top: 5px;
+        z-index: 1;
+        width: 100%;
+        height: 80px;
+        .slider-dot {
+            width: 100%;
+            text-align: center;
+            bottom: 10px;
+            button {
+                margin: 3px;
+                border-radius: 2px;
+                border: 0px;
+                width: 20px;
+                height: 6px;
+            }
+            .active {
+                background: #ff0079;
+            }
+        }
+    }
+}
+
+.one-layout {
+    padding: 10px;
+}
+
+.mat-ink-bar {
+    background-color: deeppink !important;
+}
+
+.hidden-overflow {
+    position: relative;
+    height: 17px;
+    overflow: hidden;
+}
+
+.footer-action {
+    margin-left: 20px;
+}
