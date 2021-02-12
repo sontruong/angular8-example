@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "KarrosTech-FE": {
+    "FE": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/KarrosTech-FE",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -63,11 +63,11 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "KarrosTech-FE:build"
+            "browserTarget": "build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "KarrosTech-FE:build:production"
+              "browserTarget": "build:production"
             }
           }
         },
@@ -112,15 +112,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "KarrosTech-FE:serve"
+            "devServerTarget": "serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "KarrosTech-FE:serve:production"
+              "devServerTarget": "serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "KarrosTech-FE"
+  "defaultProject": "FE"
 }
